@@ -1,0 +1,30 @@
+{
+  "name": "react-next",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "heroku-postbuild": "npm run build",  
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.8.3",
+    "@zeit/next-sass": "^1.0.1",
+    "axios": "^0.19.1",
+    "css-loader": "^3.4.2",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.2.0",
+    "node-sass": "^4.13.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-structured-data": "0.0.14",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3"
+  }
+}
