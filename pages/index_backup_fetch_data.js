@@ -17,8 +17,10 @@ export default function Index({ shows }) {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    axios.get('/api/randomQuote')
-      .then((res) => console.log(res.data))
+    // axios.get('/api/randomQuote')
+    //   .then((res) => console.log(res.data))
+    axios.get('https://api.tvmaze.com/search/shows?q=batman')
+      .then((res) => setData(res.data))
   }, [])
   
   return (

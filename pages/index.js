@@ -5,10 +5,19 @@ import Link from 'next/link';
 import Button from '@material-ui/core/Button';
 import Head from 'next/head'
 import fetch from 'isomorphic-unfetch';
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 // import '../styles/style.css'
 
-function Index({ shows }) {
+function Index(props) {
+  // const [data, setData] = useState([])
+
+  // useEffect(() => {
+  //   axios.get('https://api.tvmaze.com/search/shows?q=batman')
+  //     .then((res) => setData(res.data.map(entry => entry.show)))
+  // }, [])
+
   return (
     <Layout>
       <Head>
@@ -19,7 +28,7 @@ function Index({ shows }) {
       <Button variant="contained" color="secondary">Teste</Button>
       <h1>Batman TV Shows</h1>
       <ul>
-        {shows.map(show => (
+        {props.shows.map(show => (
           <li key={show.id}>
             <Link href="/posts/[id]" as={`/posts/${show.id}`}>
               <a>{show.name}</a>
@@ -32,13 +41,14 @@ function Index({ shows }) {
 }
 
 Index.getInitialProps = async function () {
-  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
-  const data = await res.json();
+  // const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
+  // const data = await res.json();
+  const res = await axios.get('https://api.tvmaze.com/search/shows?q=batman');
 
-  console.log(`Show data fetched. Count: ${data.length}`);
+  console.log(`Show data fetched. Count: ${res.data.length}`);
 
   return {
-    shows: data.map(entry => entry.show)
+    shows: res.data.map(entry => entry.show)
   };
 };
 
